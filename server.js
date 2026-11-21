@@ -4,7 +4,7 @@ import {Server} from 'socket.io';
 import {randomInt,randomUUID} from 'node:crypto';
 import {questions} from './questions.js';
 const app=express(),http=createServer(app),io=new Server(http);app.use(express.static('public'));
-const rooms=new Map(),DURATION=20000,FAST=10000;
+const rooms=new Map(),DURATION=25000,FAST=10000;
 const avatars=['🧑‍⚕️','👩‍⚕️','👨‍⚕️','👩🏽‍⚕️','👨🏾‍⚕️','🥼','🩺','🚑','🧠','🦸'];
 const phraseBanks={
  correct:['Ese diagnóstico comunicativo sí pasó visita.','Bien jugado, doctor. El hospital respira.','Esa neurona sí vino a trabajar.','Te salió más limpio que expediente nuevo.','Así se habla con un paciente, máquina.','El comité médico aprueba esa jugada.','Tu equipo anda con estetoscopio de oro.','Respuesta fina, sin necesidad de recetar humo.'],

@@ -24,7 +24,34 @@ const myTeam=state.teams.find(t=>t.name===myName);
 const streak=result?result.streak:(myTeam?.streak||0);
 const bonus=streak>=15?40:streak>=10?25:streak>=5?10:0;
 const correctCount=myTeam?.correctCount??((personalHistory?.count||0)+(result?.correct?1:0));
-const emoteIndex=()=>{if(state.status==='question'){return selected?6:5}if(!result)return 5;if(result.timedOut)return 15;if(!result.correct)return [10,11,12,13,14][state.index%5];if(result.streak>=15)return 4;if(result.streak>=10)return 3;if(result.streak>=5)return 2;if(result.rank===1)return 3;if(result.earned>=500)return 17;return [0,1,7,8,9,16,18,19][state.index%8]};
+// Cada equipo conserva una rotación propia durante la partida.
+// Los 20 archivos se distribuyen por tipo de reacción; ninguna reacción consecutiva repite imagen.
+const EMOTE_POOLS={
+  esperando:[5,6],
+  acierto:[0,1,2,3,4,7,8,9,17,18,19],
+  error:[10,11,12,13,14],
+  tiempo:[15,16],
+  racha:[2,3,4,17,18,19]
+};
+const emoteRotation={esperando:0,acierto:0,error:0,tiempo:0,racha:0};
+let lastEmoteEvent='',currentEmote=5,lastEmote=-1;
+function emoteIndex(){
+  let category='esperando';
+  if(state.status==='reveal'&&result){
+    category=result.timedOut?'tiempo':!result.correct?'error':result.streak>=5?'racha':'acierto';
+  }
+  // La clave evita que un re-render (ranking, reloj, conexión) cambie el búho.
+  const event=state.code+'|'+state.index+'|'+state.status+'|'+category+'|'+(result?.correct??'')+'|'+(result?.streak??'');
+  if(event===lastEmoteEvent)return currentEmote;
+  lastEmoteEvent=event;
+  const pool=EMOTE_POOLS[category];
+  let offset=emoteRotation[category]++;
+  let next=pool[offset%pool.length];
+  if(next===lastEmote&&pool.length>1){next=pool[(offset+1)%pool.length];emoteRotation[category]++}
+  lastEmote=next;
+  currentEmote=next;
+  return next;
+}
 const emotePath=n=>'/emotes/buho-'+String(n+1).padStart(2,'0')+'.webp';
 const phrase=result?.phrase||(state.status==='question'?(selected?'Tu respuesta está registrada. ¡Suerte, doctor!':'Lee el caso y elige con cuidado, doctor.'):'Esperando el resultado de esta ronda...');
 const reactionPanel=`<div class="panel reaction"><h3>🦉 REACCIÓN DEL HOSPITAL</h3><img class="emote-img" src="${emotePath(emoteIndex())}" alt="Búho médico"><div class="reaction-phrase">“${e(phrase)}”</div></div>`;

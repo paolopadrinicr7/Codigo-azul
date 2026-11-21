@@ -4,15 +4,15 @@ import {Server} from 'socket.io';
 import {randomInt,randomUUID} from 'node:crypto';
 import {questions} from './questions.js';
 const app=express(),http=createServer(app),io=new Server(http);app.use(express.static('public'));
-const rooms=new Map(),DURATION=15000,FAST=5000;
+const rooms=new Map(),DURATION=20000,FAST=10000;
 const avatars=['🧑‍⚕️','👩‍⚕️','👨‍⚕️','👩🏽‍⚕️','👨🏾‍⚕️','🥼','🩺','🚑','🧠','🦸'];
 const phraseBanks={
  correct:['Ese diagnóstico comunicativo sí pasó visita.','Bien jugado, doctor. El hospital respira.','Esa neurona sí vino a trabajar.','Te salió más limpio que expediente nuevo.','Así se habla con un paciente, máquina.','El comité médico aprueba esa jugada.','Tu equipo anda con estetoscopio de oro.','Respuesta fina, sin necesidad de recetar humo.'],
  wrong:['Esa respuesta necesita segunda opinión.','El comité médico solicita explicaciones.','Esa neurona se fue por un café.','Hoy la comunicación pidió incapacidad.','La siguiente la remontas, cirujano.','Ni el expediente entendió qué pasó.','Diagnóstico: exceso de confianza.','Eso no lo salva ni una interconsulta.'],
  fast:['Más rápido que la camilla de urgencias.','Respondieron antes de que sonara el monitor.','Reflejos de guardia nocturna, doctor.','Esa respuesta llegó en ambulancia.'],
- streak5:['Cinco seguidas. El hospital está cocinando.','Racha de cinco: el jefe de servicio está orgulloso.','Cinco aciertos: ya te quieren dar consultorio.'],
- streak10:['Diez seguidas. ¿Quién les dio superpoderes?','Racha de diez: ya pidieron tu autógrafo.','Diez aciertos, el hospital está en modo leyenda.'],
- streak15:['Quince seguidas: ni el comité lo cree.','Racha de quince: protocolo de leyenda activado.','Quince aciertos: la competencia pide vacaciones.'],
+ streak5:['Tres seguidas. El hospital está cocinando.','Racha de tres: el jefe de servicio está orgulloso.','Tres aciertos: ya te quieren dar consultorio.'],
+ streak10:['Cinco seguidas. ¿Quién les dio superpoderes?','Racha de cinco: ya pidieron tu autógrafo.','Cinco aciertos, el hospital está en modo leyenda.'],
+ streak15:['Ocho seguidas: ni el comité lo cree.','Racha de ocho: protocolo de leyenda activado.','Ocho aciertos: la competencia pide vacaciones.'],
  first:['Vas primero. No te duermas en la guardia.','Lideras la tabla, pero todavía hay pacientes.','La corona es tuya... por ahora.'],
  last:['Todavía hay tiempo para una remontada clínica.','Último no es eliminado: quedan puntos por ganar.','Hoy toca levantar el hospital desde urgencias.']
 };
@@ -25,8 +25,8 @@ function snapshot(r){const q=r.deck[r.index],teams=ordered(r);return {code:r.cod
 const broadcast=r=>io.to(r.code).emit('state',snapshot(r));
 const clear=r=>{if(r.timer)clearTimeout(r.timer);r.timer=null};
 function phrase(t,kind){const bank=phraseBanks[kind]||phraseBanks.correct;const recent=t.recentPhrases||[];const choices=bank.filter(p=>!recent.includes(p));const pool=choices.length?choices:bank.filter(p=>p!==t.lastPhrase);const p=pool[randomInt(pool.length)]||bank[0];t.lastPhrase=p;t.recentPhrases=[...recent,p].slice(-3);return p}
-function streakBonus(streak){return streak>=15?.40:streak>=10?.25:streak>=5?.10:0}
-function reveal(r){if(r.status!=='question')return;clear(r);r.status='reveal';const q=r.deck[r.index];for(const t of r.teams.values()){const a=r.answers.get(t.id);const correct=!!a&&a.choice===q.correct;if(correct){t.streak++;t.correctCount=(t.correctCount||0)+1}else t.streak=0;const bonus=correct?streakBonus(t.streak):0;const earned=correct?Math.round(q.base*(a.elapsed<=FAST?1:.8)*(1+bonus)):0;t.score+=earned;if(a){a.earned=earned;a.bonus=bonus}const kind=correct?(t.streak===5?'streak5':t.streak===10?'streak10':t.streak===15?'streak15':a.elapsed<=FAST&&randomInt(3)===0?'fast':'correct'):'wrong';t.roundResult={correct,choice:a?.choice??null,earned,bonus,streak:t.streak,phrase:phrase(t,kind),timedOut:!a}}const ranking=ordered(r);for(let i=0;i<ranking.length;i++){const t=r.teams.get(ranking[i].id);t.roundResult.rank=i+1;t.roundResult.above=i?{name:ranking[i-1].name,gap:ranking[i-1].score-t.score}:null;t.roundResult.below=i<ranking.length-1?{name:ranking[i+1].name,gap:t.score-ranking[i+1].score}:null}broadcast(r);for(const t of r.teams.values())if(t.connected)io.to(t.socketId).emit('personal-result',{index:r.index,...t.roundResult})}
+function streakBonus(streak){return streak>=8?.40:streak>=5?.25:streak>=3?.10:0}
+function reveal(r){if(r.status!=='question')return;clear(r);r.status='reveal';const q=r.deck[r.index];for(const t of r.teams.values()){const a=r.answers.get(t.id);const correct=!!a&&a.choice===q.correct;if(correct){t.streak++;t.correctCount=(t.correctCount||0)+1}else t.streak=0;const bonus=correct?streakBonus(t.streak):0;const earned=correct?Math.round(q.base*(a.elapsed<=FAST?1:.8)*(1+bonus)):0;t.score+=earned;if(a){a.earned=earned;a.bonus=bonus}const kind=correct?(t.streak===3?'streak5':t.streak===5?'streak10':t.streak===8?'streak15':a.elapsed<=FAST&&randomInt(3)===0?'fast':'correct'):'wrong';t.roundResult={correct,choice:a?.choice??null,earned,bonus,streak:t.streak,phrase:phrase(t,kind),timedOut:!a}}const ranking=ordered(r);for(let i=0;i<ranking.length;i++){const t=r.teams.get(ranking[i].id);t.roundResult.rank=i+1;t.roundResult.above=i?{name:ranking[i-1].name,gap:ranking[i-1].score-t.score}:null;t.roundResult.below=i<ranking.length-1?{name:ranking[i+1].name,gap:t.score-ranking[i+1].score}:null}broadcast(r);for(const t of r.teams.values())if(t.connected)io.to(t.socketId).emit('personal-result',{index:r.index,...t.roundResult})}
 function next(r){clear(r);r.answers.clear();r.index++;if(r.index>=r.deck.length){r.status='finished';r.deadline=null;broadcast(r);return}r.status='question';r.deadline=Date.now()+DURATION;broadcast(r);r.timer=setTimeout(()=>reveal(r),DURATION+50)}
 function allAnswered(r){const active=[...r.teams.values()].filter(t=>t.connected);return active.length>0&&active.every(t=>r.answers.has(t.id))}
 io.on('connection',socket=>{

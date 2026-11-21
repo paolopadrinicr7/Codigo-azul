@@ -1,23 +1,263 @@
-// 3 faciles, 11 medias, 6 dificiles. Ultimas 3 son final de alta dificultad.
+// CÓDIGO AZUL V6: 20 preguntas revisadas. Últimas 3 son finales ×3.
 export const questions = [
-{difficulty:'Fácil',level:'Primer contacto',title:'Antes de iniciar una entrevista con una persona hospitalizada, ¿qué intervención establece mejor el encuadre?',options:['Pedirle que describa sus síntomas antes de concretar el motivo','Preguntar por el síntoma principal y explorar su evolución','Solicitar que enumere los antecedentes antes de continuar','Confirmar la consulta prevista y comenzar la exploración'],correct:1,explanation:'La presentación, identificación y explicación del encuentro favorecen confianza y autonomía.'},
-{difficulty:'Media',level:'Escucha activa',title:'Una paciente afirma: «Me preocupa que esto afecte mi trabajo». ¿Qué respuesta explora mejor su perspectiva sin asumir su significado?',options:['Consultar al paciente si autoriza compartir información','Pedir al paciente permiso antes de compartir datos concretos','Explicar únicamente datos generales sobre el tratamiento','Preguntar al familiar qué información necesita conocer'],correct:0,explanation:'Una pregunta de clarificación explora la preocupación sin anticipar su significado ni tranquilizar prematuramente.'},
-{difficulty:'Media',level:'Comprensión',title:'Tras explicar una pauta nueva, el paciente dice que entendió. ¿Cuál es la mejor forma de comprobarlo?',options:['Validar la emoción y recomendar que realice la prueba pronto','Ofrecer tranquilidad sin anticipar resultados de la prueba','Reconocer su angustia y explorar qué le preocupa más','Dar tiempo para llorar y retomar después la explicación'],correct:2,explanation:'Teach-back evalúa la claridad de la explicación, no la memoria literal ni la obediencia.'},
-{difficulty:'Difícil',level:'Autonomía',title:'Un adulto orientado rechaza que su hija conozca el diagnóstico. La hija exige información porque paga el tratamiento. ¿Qué procede?',options:['Explicar que los gestos deben interpretarse junto con el relato','No concluir emociones concretas por una señal aislada','Preguntar directamente si se siente incómodo en la consulta','Evitar deducir emociones por un gesto aislado del paciente'],correct:1,explanation:'La financiación del tratamiento no reemplaza la autorización del paciente con capacidad para decidir.'},
-{difficulty:'Media',level:'Empatía',title:'Una persona llora tras conocer que necesita otra prueba. ¿Cuál respuesta combina validación y exploración?',options:['Interrumpir con permiso, precisar el inicio y retomar el relato','Esperar al final del relato y después ordenar los síntomas','Pedir permiso para precisar el inicio y retomar el relato','Resumir lo escuchado y orientar la entrevista al inicio'],correct:2,explanation:'Reconocer la emoción y explorarla evita minimizarla o asumir su causa.'},
-{difficulty:'Fácil',level:'Lenguaje clínico',title:'¿Qué formulación es más comprensible para explicar que una prueba no confirmó una sospecha?',options:['La prueba resultó negativa para la alteración estudiada','La prueba no encontró aquello que estábamos buscando','El análisis no confirmó la hipótesis clínica inicial','Los resultados no identificaron señales en esta ocasión'],correct:1,explanation:'El lenguaje claro describe el hallazgo sin convertir un resultado aislado en certeza absoluta.'},
-{difficulty:'Media',level:'Comunicación no verbal',title:'Un paciente evita el contacto visual, pero participa y responde coherentemente. ¿Cuál interpretación es más prudente?',options:['Observar el gesto como indicio de resistencia a la consulta','Interpretar la conducta como posible falta de confianza','Explorar con respeto si hay incomodidad al conversar','No asignar un significado fijo a un gesto aislado'],correct:3,explanation:'La conducta no verbal depende de contexto, cultura, características personales y situación clínica.'},
-{difficulty:'Media',level:'Entrevista',title:'Durante una narración larga, necesitas precisar el inicio del dolor. ¿Qué transición preserva mejor la alianza?',options:['Pedir permiso para precisar cuándo inició el dolor y volver al relato','Resumir primero el relato y después solicitar la fecha de inicio','Esperar a que termine de narrar y anotar la cronología después','Preguntar por la duración del dolor sin explicar la interrupción'],correct:0,explanation:'Una interrupción señalizada y respetuosa permite estructurar sin invalidar el relato.'},
-{difficulty:'Difícil',level:'Incertidumbre',title:'Un estudio inicial no explica los síntomas. El paciente pregunta si eso significa que no tiene nada. ¿Cuál respuesta es más precisa?',options:['Decir que el estudio no muestra la causa y cerrar la evaluación','Proponer nuevas pruebas sin comentar lo que significa el resultado','Explicar el alcance del estudio y acordar los pasos siguientes','Atribuir los síntomas a una causa funcional aún no evaluada'],correct:2,explanation:'Comunicar límites del estudio evita falsas certezas y sostiene un plan compartido.'},
-{difficulty:'Media',level:'Decisión compartida',title:'Hay dos alternativas razonables con beneficios y cargas diferentes. ¿Qué intervención favorece una decisión compartida?',options:['Recomendar una opción tras explicar sus ventajas clínicas','Comparar opciones y explorar las prioridades del paciente','Describir las dos opciones y dejar la decisión sin orientación','Elegir la opción con menos riesgos sin explorar preferencias'],correct:1,explanation:'La decisión compartida integra evidencia clínica y valores del paciente.'},
-{difficulty:'Media',level:'Barreras',title:'Un paciente con dominio limitado del español debe decidir sobre un procedimiento. ¿Qué estrategia es más adecuada?',options:['Pedir a un familiar adulto que traduzca el consentimiento','Utilizar un resumen breve para reducir la dificultad del idioma','Contar con intérprete capacitado y hablar con el paciente','Solicitar que firme y entregar después información traducida'],correct:2,explanation:'Un intérprete capacitado mejora precisión, confidencialidad y participación; debe evitarse depender de menores.'},
-{difficulty:'Fácil',level:'Escucha activa',title:'¿Cuál pregunta facilita una narración inicial sin imponer categorías de síntomas?',options:['¿Qué molestias aparecieron primero y cómo cambiaron?','¿El problema comenzó antes o después del almuerzo?','¿Cuál de estos síntomas ha sido el más molesto?','¿Qué ha sucedido desde que comenzaron sus molestias?'],correct:3,explanation:'La pregunta abierta permite al paciente ordenar su relato antes de precisar detalles.'},
-{difficulty:'Media',level:'Conflicto',title:'Un familiar interrumpe repetidamente mientras el paciente intenta responder. ¿Qué harías primero?',options:['Pedir al familiar que espere fuera durante la entrevista','Preguntar al paciente si desea que el familiar participe','Dejar que el familiar complete el relato por el paciente','Solicitar al familiar que solo intervenga al finalizar'],correct:1,explanation:'Se protege la voz del paciente y se aclara su preferencia sobre la presencia del acompañante.'},
-{difficulty:'Difícil',level:'Malas noticias',title:'Antes de comunicar un resultado preocupante, el paciente pregunta: «¿Es algo grave?». Aún no sabes cuánto desea conocer. ¿Qué respuesta es mejor?',options:['Adelantar el hallazgo y explicar de inmediato sus implicaciones','Pedir que espere a escuchar el resultado antes de opinar','Explicar que hay un hallazgo y explorar qué desea saber','Preguntar si prefiere que el resultado se informe a su familia'],correct:2,explanation:'Se comunica con honestidad, se explora comprensión previa y se ajusta el detalle a la preferencia informativa.'},
-{difficulty:'Media',level:'Reparación',title:'El paciente dice: «Me sentí ignorado cuando miró la computadora». ¿Qué respuesta repara mejor la relación?',options:['Reconocer cómo se sintió y preguntar qué quedó sin escuchar','Explicar que el registro electrónico también es necesario','Pedir disculpas y prometer no usar más la computadora','Aclarar que se revisaba información para evitar errores'],correct:0,explanation:'Reconocer el impacto, explicar brevemente y abrir espacio para corregir es mejor que defenderse.'},
-{difficulty:'Media',level:'Plan terapéutico',title:'Una persona dice que no puede costear el tratamiento propuesto. ¿Cuál es la mejor respuesta inicial?',options:['Explicar la eficacia del tratamiento y recomendar mantenerlo','Explorar el problema económico y buscar opciones viables','Proponer suspender temporalmente hasta reunir el dinero','Sugerir apoyo familiar para poder costear el tratamiento'],correct:1,explanation:'Las barreras económicas son relevantes para un plan factible y deben abordarse sin culpabilizar.'},
-{difficulty:'Media',level:'Consentimiento',title:'Una paciente firma el consentimiento, pero después dice: «No entendí qué pasa si no me opero». ¿Qué debe hacerse?',options:['Confirmar la firma y explicar que ya existe autorización','Repetir la explicación de los riesgos del procedimiento','Aclarar qué implica no operarse y revisar la decisión','Pedir al acompañante que ayude a explicar las opciones'],correct:2,explanation:'La firma no sustituye la comprensión; debe aclararse información material antes de decidir.'},
-{difficulty:'Difícil',level:'FINAL · Riesgo y autonomía',title:'Un adulto rechaza un procedimiento recomendado y expresa una razón que parece inconsistente. Está consciente, pero muy ansioso. ¿Qué paso comunicativo y clínico es prioritario?',options:['Pedir autorización familiar por el estado emocional del paciente','Respetar la negativa sin comprobar qué entendió del riesgo','Repetir la recomendación y solicitar una nueva respuesta','Evaluar comprensión y razonamiento, considerando la urgencia'],correct:3,explanation:'La capacidad es específica de la decisión y no se invalida automáticamente por ansiedad o desacuerdo. La urgencia modifica las acciones disponibles.'},
-{difficulty:'Difícil',level:'FINAL · Confidencialidad',title:'Un paciente adulto pide que no se comparta información con su pareja. Minutos después presenta una alteración aguda que le impide decidir. ¿Qué respuesta es más apropiada?',options:['Informar a la pareja de todos los datos por la nueva incapacidad','Limitar lo compartido a lo necesario según representación legal','Negar cualquier dato aunque fuera necesario para la atención','Consultar a la pareja qué información considera pertinente'],correct:1,explanation:'La pérdida de capacidad no convierte a la pareja en destinataria automática de toda la información; deben valorarse necesidad, representación y normativa.'},
-{difficulty:'Difícil',level:'FINAL · Error y transparencia',title:'Se detecta que se comunicó al paciente un resultado preliminar como definitivo. Aún no se conocen todas las consecuencias. ¿Cuál es la mejor respuesta?',options:['Esperar a aclarar el impacto antes de hablar con el paciente','Corregir el resultado sin comentar cómo surgió el error','Reconocer el error, la incertidumbre y los próximos pasos','Explicar que el resultado era provisional y esperar otro'],correct:2,explanation:'La comunicación transparente distingue hechos, incertidumbres y acciones correctivas sin especular ni ocultar.'}
+  {
+    "difficulty": "Fácil",
+    "level": "Inicio de consulta",
+    "title": "Un paciente llega por primera vez a consulta. ¿Cuál apertura facilita una relación de confianza?",
+    "options": [
+      "Revisar el expediente y empezar con los antecedentes",
+      "Solicitar los síntomas y explicar el plan al terminar",
+      "Presentarse, confirmar su nombre y explicar el encuentro",
+      "Pedir los estudios y dejar las preguntas para después"
+    ],
+    "correct": 2,
+    "explanation": "Presentarse, identificar al paciente y explicar el propósito de la consulta establece el encuadre y favorece la confianza."
+  },
+  {
+    "difficulty": "Media",
+    "level": "Escucha activa",
+    "title": "La paciente dice: «Me preocupa que el tratamiento afecte mi trabajo». ¿Qué respuesta permite comprender mejor su preocupación?",
+    "options": [
+      "«¿Qué parte de su trabajo le preocupa que cambie?»",
+      "«El tratamiento es seguro y podrá seguir trabajando»",
+      "«Primero revisemos sus síntomas y luego hablamos de eso»",
+      "«Es normal preocuparse; muchas personas sienten lo mismo»"
+    ],
+    "correct": 0,
+    "explanation": "La pregunta abierta y específica explora qué significa el trabajo para la paciente sin anticipar su respuesta ni minimizarla."
+  },
+  {
+    "difficulty": "Media",
+    "level": "Verificación de comprensión",
+    "title": "Después de explicar un medicamento, el paciente asegura haber entendido. ¿Qué intervención comprueba mejor la claridad de la explicación?",
+    "options": [
+      "«¿Le quedó claro todo lo que acabo de explicar?»",
+      "«¿Puede repetir exactamente las indicaciones que di?»",
+      "«¿Promete que seguirá el tratamiento como indiqué?»",
+      "«Para ver si fui claro, ¿cómo lo tomará en casa?»"
+    ],
+    "correct": 3,
+    "explanation": "Teach-back pide explicar con palabras propias cómo aplicará las indicaciones. Evalúa la claridad de la comunicación, no la obediencia."
+  },
+  {
+    "difficulty": "Difícil",
+    "level": "Confidencialidad",
+    "title": "Un adulto con capacidad para decidir prohíbe informar a su hija del diagnóstico. Ella insiste porque paga el tratamiento. ¿Qué procede?",
+    "options": [
+      "Informar solo del diagnóstico, pues financia la atención",
+      "Respetar su decisión y explorar cómo desea involucrarla",
+      "Pedir a la hija que confirme si él comprendió los riesgos",
+      "Compartir el pronóstico, pero reservar el diagnóstico"
+    ],
+    "correct": 1,
+    "explanation": "El pago no concede acceso a información confidencial. Si el paciente conserva capacidad, se respeta su decisión y se puede explorar si desea involucrar a su hija."
+  },
+  {
+    "difficulty": "Media",
+    "level": "Empatía",
+    "title": "Una persona comienza a llorar cuando se le indica realizar otro estudio. ¿Cuál respuesta combina validación y exploración?",
+    "options": [
+      "«No se preocupe; todavía no tenemos un diagnóstico»",
+      "«Podemos hablar cuando se sienta menos alterada»",
+      "«Le explicaré la prueba para que deje de preocuparse»",
+      "«Veo que esto le afecta; ¿qué le preocupa más?»"
+    ],
+    "correct": 3,
+    "explanation": "Nombrar con prudencia la emoción y preguntar por su origen permite comprender la preocupación sin minimizarla ni imponer explicaciones."
+  },
+  {
+    "difficulty": "Fácil",
+    "level": "Lenguaje claro",
+    "title": "¿Cómo explicarías un resultado negativo sin recurrir a tecnicismos ni prometer certeza absoluta?",
+    "options": [
+      "«El resultado descarta cualquier problema relacionado»",
+      "«La hipótesis clínica inicial no tuvo confirmación»",
+      "«La prueba no encontró lo que estábamos buscando»",
+      "«Su estudio es negativo, así que puede estar tranquilo»"
+    ],
+    "correct": 2,
+    "explanation": "La formulación sencilla describe lo que encontró la prueba, sin afirmar que descarta todas las enfermedades."
+  },
+  {
+    "difficulty": "Media",
+    "level": "Comunicación no verbal",
+    "title": "Un paciente evita mirar a los ojos, pero responde con claridad. ¿Qué interpretación es la más prudente?",
+    "options": [
+      "El gesto aislado no permite concluir cómo se siente",
+      "Probablemente oculta datos relevantes de la consulta",
+      "Su lenguaje corporal confirma una actitud defensiva",
+      "Conviene pedirle que mantenga contacto visual continuo"
+    ],
+    "correct": 0,
+    "explanation": "El contacto visual varía con el contexto, la cultura y las características personales. No permite inferir por sí solo desconfianza o engaño."
+  },
+  {
+    "difficulty": "Media",
+    "level": "Estructura de entrevista",
+    "title": "El paciente lleva varios minutos narrando detalles y necesitas precisar cuándo comenzó el dolor. ¿Cómo intervenir?",
+    "options": [
+      "Interrumpir con una pregunta cerrada para ahorrar tiempo",
+      "Pedir permiso para precisar el inicio y luego continuar",
+      "Esperar sin intervenir, aunque se pierda la cronología",
+      "Pedirle que omita detalles para centrarse en el dolor"
+    ],
+    "correct": 1,
+    "explanation": "Una interrupción señalizada con permiso permite orientar la entrevista y conservar la alianza terapéutica."
+  },
+  {
+    "difficulty": "Difícil",
+    "level": "Comunicación de incertidumbre",
+    "title": "Un estudio inicial no explica los síntomas. El paciente pregunta: «¿Entonces no tengo nada?». ¿Qué respuesta es más adecuada?",
+    "options": [
+      "«Si salió normal, lo más probable es que no sea grave»",
+      "«Este estudio no explica los síntomas; revisemos qué sigue»",
+      "«Necesitamos más pruebas antes de hablar de resultados»",
+      "«Puede ser estrés; observemos si los síntomas desaparecen»"
+    ],
+    "correct": 1,
+    "explanation": "Se debe explicar el alcance limitado del estudio, reconocer la incertidumbre y acordar los siguientes pasos sin invalidar los síntomas."
+  },
+  {
+    "difficulty": "Media",
+    "level": "Decisión compartida",
+    "title": "Dos tratamientos son razonables, pero difieren en efectos secundarios y frecuencia de visitas. ¿Qué facilita decidir?",
+    "options": [
+      "Elegir el más eficaz y comunicar sus inconvenientes",
+      "Enumerar los riesgos y pedir que el paciente decida solo",
+      "Sugerir el más cómodo para reducir dudas y ansiedad",
+      "Comparar las opciones y explorar prioridades personales"
+    ],
+    "correct": 3,
+    "explanation": "La decisión compartida combina información clínica sobre las alternativas con preferencias, circunstancias y valores del paciente."
+  },
+  {
+    "difficulty": "Media",
+    "level": "Barreras de idioma",
+    "title": "Una persona con dominio limitado del español debe consentir un procedimiento. ¿Qué estrategia favorece una decisión informada?",
+    "options": [
+      "Pedir a su acompañante que traduzca el formulario",
+      "Explicar más despacio y repetir las frases difíciles",
+      "Usar intérprete capacitado y dirigirse al paciente",
+      "Entregar el consentimiento y solicitar su firma luego"
+    ],
+    "correct": 2,
+    "explanation": "Un intérprete capacitado favorece precisión, privacidad y participación directa; hablar más despacio no resuelve la barrera idiomática."
+  },
+  {
+    "difficulty": "Fácil",
+    "level": "Pregunta abierta",
+    "title": "¿Cuál pregunta invita al paciente a contar su problema con sus propias palabras?",
+    "options": [
+      "«¿Qué ha notado desde que empezó a sentirse mal?»",
+      "«¿El dolor comenzó después de comer?»",
+      "«¿Le duele más al respirar o al moverse?»",
+      "«¿Tiene náuseas además de la molestia?»"
+    ],
+    "correct": 0,
+    "explanation": "La pregunta abierta permite una narración inicial sin limitar de entrada la respuesta a categorías sugeridas por el entrevistador."
+  },
+  {
+    "difficulty": "Media",
+    "level": "Participación del paciente",
+    "title": "La pareja responde constantemente por el paciente, quien intenta hablar. ¿Cuál es la mejor intervención inicial?",
+    "options": [
+      "Pedir a la pareja que espere fuera sin consultarlo antes",
+      "Dejar que la pareja termine para evitar un conflicto",
+      "Preguntar al paciente cómo desea que participe su pareja",
+      "Dirigir todas las preguntas a la pareja por eficiencia"
+    ],
+    "correct": 2,
+    "explanation": "La preferencia del paciente guía la participación del acompañante. Se protege su voz sin asumir que desea excluir a su pareja."
+  },
+  {
+    "difficulty": "Difícil",
+    "level": "Malas noticias",
+    "title": "Antes de revelar un hallazgo preocupante, el paciente pregunta: «¿Es grave?». No sabes cuánto detalle quiere. ¿Cómo responder?",
+    "options": [
+      "«Primero escucharé qué le dijeron sobre el estudio»",
+      "«Hay un hallazgo importante; ¿qué desea saber ahora?»",
+      "«Es mejor explicárselo todo de una vez para ser claros»",
+      "«Podemos llamar a su familia antes de darle detalles»"
+    ],
+    "correct": 1,
+    "explanation": "La respuesta reconoce honestamente la importancia del hallazgo y explora cuánto desea saber el paciente, sin ocultarlo ni imponer información."
+  },
+  {
+    "difficulty": "Media",
+    "level": "Reparación de confianza",
+    "title": "El paciente comenta: «Sentí que no me escuchó porque miraba la pantalla». ¿Qué respuesta ayuda más a reparar la relación?",
+    "options": [
+      "«Lamento que se sintiera así; ¿qué no pude escuchar?»",
+      "«Revisaba datos para atenderlo con mayor seguridad»",
+      "«La computadora es obligatoria durante la consulta»",
+      "«La próxima vez tomaré notas cuando usted se vaya»"
+    ],
+    "correct": 0,
+    "explanation": "Reconocer el impacto y ofrecer espacio para recuperar lo que faltó es más reparador que justificarse o prometer algo poco realista."
+  },
+  {
+    "difficulty": "Media",
+    "level": "Barreras económicas",
+    "title": "Un paciente dice que no puede pagar el medicamento recomendado. ¿Qué respuesta inicial favorece un plan viable?",
+    "options": [
+      "«Es importante que haga el esfuerzo por conseguirlo»",
+      "«Pregunte si su familia puede ayudarle con el costo»",
+      "«Por ahora deje el tratamiento hasta tener dinero»",
+      "«Revisemos qué costo le dificulta y otras opciones»"
+    ],
+    "correct": 3,
+    "explanation": "Explorar la barrera económica sin juzgar permite buscar alternativas seguras y factibles con el paciente."
+  },
+  {
+    "difficulty": "Media",
+    "level": "Consentimiento informado",
+    "title": "Una paciente firmó el consentimiento, pero pregunta qué pasaría si no se opera. ¿Qué debe hacer el médico?",
+    "options": [
+      "Recordar que la firma indica aceptación del procedimiento",
+      "Explicar la alternativa de no operarse y revisar su decisión",
+      "Detallar de nuevo la técnica sin discutir otras opciones",
+      "Pedir a su familiar que confirme que está de acuerdo"
+    ],
+    "correct": 1,
+    "explanation": "La firma no sustituye la comprensión. Deben explicarse las alternativas, incluida la no intervención, antes de confirmar una decisión informada."
+  },
+  {
+    "difficulty": "Difícil",
+    "level": "FINAL · Capacidad de decisión",
+    "title": "Un adulto ansioso rechaza un procedimiento urgente. Su motivo parece contradictorio, pero conversa con claridad. ¿Qué paso es prioritario?",
+    "options": [
+      "Evaluar si comprende, aprecia y razona sobre la decisión",
+      "Solicitar que su familiar autorice por el nivel de ansiedad",
+      "Asumir que su rechazo demuestra falta de capacidad",
+      "Aceptar el rechazo sin aclarar los riesgos inmediatos"
+    ],
+    "correct": 0,
+    "explanation": "La ansiedad o el desacuerdo no eliminan automáticamente la capacidad. Debe evaluarse para esa decisión, considerando comprensión, apreciación, razonamiento, expresión de elección y urgencia."
+  },
+  {
+    "difficulty": "Difícil",
+    "level": "FINAL · Privacidad",
+    "title": "Un paciente pidió no informar a su pareja. Luego pierde temporalmente la capacidad para decidir. ¿Cómo manejar la información?",
+    "options": [
+      "Compartir todo con la pareja al no poder decidir él",
+      "Mantener secreto absoluto incluso ante una urgencia",
+      "Pedir a la pareja autorización para revisar su expediente",
+      "Limitar la información a lo necesario y a quien corresponda"
+    ],
+    "correct": 3,
+    "explanation": "La incapacidad no elimina automáticamente la confidencialidad ni convierte a la pareja en representante. Se comparte solo lo necesario conforme a representación y normativa aplicable."
+  },
+  {
+    "difficulty": "Difícil",
+    "level": "FINAL · Transparencia",
+    "title": "Se informó como definitivo un resultado que era preliminar. Todavía no se conocen las consecuencias. ¿Cómo comunicarlo?",
+    "options": [
+      "Esperar hasta conocer todas las consecuencias del error",
+      "Corregir el dato sin mencionar la comunicación anterior",
+      "Reconocer el error, aclarar la incertidumbre y dar un plan",
+      "Atribuir el problema al laboratorio y pedir paciencia"
+    ],
+    "correct": 2,
+    "explanation": "La transparencia exige corregir el error, distinguir lo conocido de lo incierto y explicar los próximos pasos sin culpar ni especular."
+  }
 ];

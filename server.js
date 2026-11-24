@@ -5,7 +5,7 @@ import {randomInt,randomUUID} from 'node:crypto';
 import {questions} from './questions.js';
 const app=express(),http=createServer(app),io=new Server(http);app.use(express.static('public'));
 const rooms=new Map(),DURATION=25000,FAST=10000;
-const avatars=['🧑‍⚕️','👩‍⚕️','👨‍⚕️','👩🏽‍⚕️','👨🏾‍⚕️','🥼','🩺','🚑','🧠','🦸'];
+const avatars=['buho-01','buho-02','buho-03','buho-04','buho-05','buho-06','buho-07','buho-08','buho-09','buho-10','buho-11','buho-12','buho-13','buho-14','buho-15','buho-16','buho-17','buho-18','buho-19','buho-20'];
 const phraseBanks={
  correct:['Ese diagnóstico comunicativo sí pasó visita.','Bien jugado, doctor. El hospital respira.','Esa neurona sí vino a trabajar.','Te salió más limpio que expediente nuevo.','Así se habla con un paciente, máquina.','El comité médico aprueba esa jugada.','Tu equipo anda con estetoscopio de oro.','Respuesta fina, sin necesidad de recetar humo.'],
  wrong:['Esa respuesta necesita segunda opinión.','El comité médico solicita explicaciones.','Esa neurona se fue por un café.','Hoy la comunicación pidió incapacidad.','La siguiente la remontas, cirujano.','Ni el expediente entendió qué pasó.','Diagnóstico: exceso de confianza.','Eso no lo salva ni una interconsulta.'],

@@ -1,0 +1,1 @@
+CÓDIGO AZUL V4: Reemplaza public/index.html y sube public/emotes/ con sus 20 archivos webp. Mantén server.js y questions.js actuales. La tabla, el centro, la racha y los emotes se muestran en la pantalla de cada mesa.

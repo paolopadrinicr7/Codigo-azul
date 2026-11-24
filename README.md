@@ -1,20 +1,25 @@
-# CÓDIGO AZUL: BATALLA DE HOSPITALES
+# Código Azul: Batalla de Hospitales V2
 
-Videojuego competitivo de comunicación médico-paciente: 20 preguntas, un celular por mesa, respuestas simultáneas y ranking en vivo.
+Actualización del juego multijugador con fondo médico, avatares seleccionables, 15 segundos por pregunta, dificultad mezclada, 100/200/300 puntos, bonificación por responder en los primeros 5 segundos y ranking en vivo.
 
-## Publicación sin programar
+## Actualizar el mismo juego en Render
 
-**Importante:** GitHub almacena el código, pero GitHub Pages NO ejecuta este servidor Node.js con Socket.IO. Se necesita un hosting como Render.
+1. Conserva tu repositorio de GitHub actual y el servicio Render existente.
+2. En GitHub, reemplaza `server.js`, `README.md` y `public/index.html` con los de este ZIP. Sube también `public/hospital.png`. `questions.js`, `package.json` y `render.yaml` pueden permanecer como están.
+3. Comprueba que `index.html` y `hospital.png` estén dentro de `public/`.
+4. Confirma los cambios con **Commit changes**. Render desplegará automáticamente si Auto-Deploy está activo; de lo contrario, utiliza Manual Deploy → Deploy latest commit.
+5. Espera al estado Live y prueba desde computadora y al menos dos celulares.
 
-1. En GitHub crea un repositorio nuevo, por ejemplo `codigo-azul`.
-2. Descomprime el ZIP y en el repositorio selecciona **Add file → Upload files**. Arrastra **todos los archivos y la carpeta `public`**, no el ZIP. Los archivos `server.js`, `package.json` y `render.yaml` deben quedar en la raíz del repositorio. Haz clic en **Commit changes**.
-3. En https://dashboard.render.com/ selecciona **New → Blueprint** y conecta el repositorio de GitHub.
-4. Render detectará `render.yaml`. Revisa la configuración y confirma **Deploy**. Si el plan gratuito no está disponible, revisa los planes ofrecidos antes de aceptar cualquier cargo.
-5. Cuando Render indique que está activo, abre la URL `https://...onrender.com` desde tu computadora y desde dos celulares para probarlo.
-6. El anfitrión crea la sala y proyecta el código. Cada mesa entra con su celular y se registra. Se requieren al menos dos mesas.
+## Reglas
 
-**Advertencias:** El servicio gratuito puede tardar en despertar tras inactividad. Las salas se pierden si el servidor se reinicia o el anfitrión se desconecta. Prueba todo antes de exponer.
+- 20 preguntas. Las primeras 17 tienen valores intercalados de 100 y 200 puntos; las últimas tres valen 300.
+- Se dispone de 15 segundos por pregunta. Respuestas correctas recibidas durante los primeros 5 segundos obtienen el valor completo. Después obtienen el 80%. Respuestas incorrectas valen 0.
+- Si todas las mesas conectadas responden, se muestra inmediatamente la solución y la clasificación.
+- El anfitrión controla cuándo comienza la siguiente pregunta para que todos vean el ranking.
+- El ranking se calcula en el servidor para evitar que un celular manipule sus puntos.
 
-## Ejecutar en computadora
+## Limitaciones
 
-Con Node.js 18 o superior: `npm install` y `npm start`; luego visita `http://localhost:3000`.
+- Las salas están en memoria: un reinicio del servidor o desconexión del anfitrión cierra la partida.
+- Si un equipo se desconecta durante la partida, queda en la clasificación y no puede reconectarse a la misma sala en esta versión.
+- El fondo es una ilustración de hospital incluida localmente, no una fotografía real.

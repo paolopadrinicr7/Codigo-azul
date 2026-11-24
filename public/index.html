@@ -47,6 +47,16 @@ input{background:#fff2e8;color:#30142c;border:2px solid #ed8f9d;font-size:16px;f
 @media(max-width:480px){.home-hero .hero-owl{height:190px;width:40%;max-width:40%}}
 /* Búho de cuerpo completo dinámico en la zona derecha del hero */
 @media(min-width:781px){.home-hero{min-height:570px}.home-hero .hero-owl{height:clamp(500px,74vh,620px);max-width:54%;width:auto;bottom:0;right:0;object-fit:contain;object-position:center bottom;opacity:1}}
+
+/* VICE CITY HERO: retrato grande completo, sin recortes ni filtros agresivos */
+@media(min-width:781px){
+.home-layout{align-items:start;min-height:calc(100vh - 135px)}
+.home-hero{height:clamp(610px,calc(100vh - 145px),850px);min-height:610px;padding-top:clamp(80px,15vh,170px);overflow:visible}
+.home-hero .hero-owl{position:absolute;right:-1%;bottom:0;width:auto;max-width:51%;height:clamp(530px,calc(100vh - 180px),750px);object-fit:contain;object-position:center bottom;opacity:1;filter:drop-shadow(0 16px 15px rgba(22,8,35,.4));image-rendering:auto;z-index:2}
+.home-hero .hero-title{position:relative;z-index:3;pointer-events:none}
+.home-hero .hero-label,.home-hero p,.home-facts{position:relative;z-index:3}
+}
+@media(max-width:780px){.home-hero{overflow:visible}.home-hero .hero-owl{object-fit:contain;object-position:center bottom;filter:drop-shadow(0 7px 9px rgba(22,8,35,.4));image-rendering:auto}}
 </style></head><body><main class="wrap"><header class="brand-head"><div class="brand-logo">CÓDIGO <span>AZUL</span><small>VICE CITY EDITION</small></div><div class="brand-kicker">MISIÓN COMUNICACIÓN <span>✦</span> MULTIJUGADOR EN VIVO</div></header><div id="app"></div></main><script src="/socket.io/socket.io.js"></script><script>
 const socket=io(),app=document.getElementById('app'),avatars=['buho-01','buho-02','buho-03','buho-04','buho-05','buho-06','buho-07','buho-08','buho-09','buho-10','buho-11','buho-12','buho-13','buho-14','buho-15','buho-16','buho-17','buho-18','buho-19','buho-20'];let role='',room='',state=null,selected=false,clock=null,avatar=avatars[0],myName='',lastIndex=-1,earned=null,personal=null,personalHistory=null;
 const emoteRotation={esperando:0,acierto:0,error:0,tiempo:0,racha:0};let lastEmoteEvent='',currentEmote=5,lastEmote=-1;

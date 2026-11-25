@@ -132,6 +132,13 @@ input{background:#fff2e8;color:#30142c;border:2px solid #ed8f9d;font-size:16px;f
 .podium-name{border-top:1px solid #ffffff38;padding-top:6px;width:90%;margin:0 auto;color:#fff8ec;text-shadow:0 2px 4px #180d22b0}
 .podium-points{color:#fff1d7}
 @media(max-width:780px){.change-avatar{background-position:center bottom;background-image:linear-gradient(180deg,rgba(35,14,44,.30) 0%,rgba(39,17,47,.40) 39%,rgba(27,12,37,.80) 65%,rgba(27,12,37,.86)),url('/lobby-boulevard.webp')}.lobby-picker-side{border:0;border-top:1px solid #f78cba44}.podium{gap:7px;padding:0 2px 13px}.podium-step,.podium-step.gold,.podium-step.silver,.podium-step.bronze{padding:9px 4px 10px;border-radius:6px 6px 9px 9px}.podium-step::before{height:11px;top:-10px}.podium-step small{letter-spacing:.5px}.podium-step::after{inset:3px}.podium-name{padding-top:4px}.podium-owl{filter:drop-shadow(0 0 4px var(--rim)) drop-shadow(0 0 9px var(--mist))}}
+.podium-name {
+    font-family: Arial, sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+    text-shadow: none;
+}
 </style></head><body><main class="wrap"><header class="brand-head"><div class="brand-logo">CÓDIGO <span>AZUL</span><small>VICE CITY EDITION</small></div><div class="brand-kicker">MISIÓN COMUNICACIÓN <span>✦</span> MULTIJUGADOR EN VIVO</div></header><div id="app"></div></main><script src="/socket.io/socket.io.js"></script><script>
 const socket=io(),app=document.getElementById('app'),avatars=['buho-01','buho-02','buho-03','buho-04','buho-05','buho-06','buho-07','buho-08','buho-09','buho-10','buho-11','buho-12','buho-13','buho-14','buho-15','buho-16','buho-17','buho-18','buho-19','buho-20'];let role='',room='',state=null,selected=false,clock=null,avatar=avatars[0],myName='',lastIndex=-1,earned=null,personal=null,personalHistory=null;
 const emoteRotation={esperando:0,acierto:0,error:0,tiempo:0,racha:0};let lastEmoteEvent='',currentEmote=5,lastEmote=-1;
